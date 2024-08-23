@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://dl20w5luuve5k"]
+
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_8x23q"]
+[ext_resource type="Texture2D" uid="uid://shfataqgw00w" path="res://assets/sprites/menu/background.png" id="1_ljx6i"]
+[ext_resource type="Texture2D" uid="uid://c8w8xyh6m0kxq" path="res://assets/sprites/menu/play_button/play_button1.png" id="2_frgnb"]
+[ext_resource type="Texture2D" uid="uid://dhkrl2pj1bqng" path="res://assets/sprites/menu/play_button/play_button2.png" id="3_fc7yu"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8x23q")
+
+[node name="LogoBulletwave" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -640.0
+offset_right = 640.0
+offset_bottom = 720.0
+grow_horizontal = 2
+texture = ExtResource("1_ljx6i")
+expand_mode = 1
+
+[node name="PlayButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = 162.0
+offset_right = 20.0
+offset_bottom = 202.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("2_frgnb")
+texture_hover = ExtResource("3_fc7yu")
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
