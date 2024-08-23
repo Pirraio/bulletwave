@@ -1,0 +1,102 @@
+[gd_scene load_steps=9 format=3 uid="uid://dikmvb8o3xqqd"]
+
+[ext_resource type="Texture2D" uid="uid://ffqf27uy25n3" path="res://assets/sprites/character_selection/selection_character.png" id="1_jd0au"]
+[ext_resource type="Script" path="res://scripts/character_selection.gd" id="1_yo2e5"]
+[ext_resource type="Texture2D" uid="uid://cmggtgwakcqsb" path="res://assets/sprites/character_selection/billy_selected.png" id="2_3prnw"]
+[ext_resource type="Texture2D" uid="uid://3trfjn32d4as" path="res://assets/sprites/character_selection/billy_pixel_silhoutte.png" id="4_3etw0"]
+[ext_resource type="Texture2D" uid="uid://cpaiksinga7gc" path="res://assets/sprites/character_selection/billy_pixel.png" id="5_xjg1p"]
+[ext_resource type="Texture2D" uid="uid://dy6dv7aj16eyj" path="res://assets/sprites/character_selection/caroline_selected.png" id="6_a8bgd"]
+[ext_resource type="Texture2D" uid="uid://b71ybvkum6eu6" path="res://assets/sprites/character_selection/caroline_pixel_silhoutte.png" id="7_klm6k"]
+[ext_resource type="Texture2D" uid="uid://0d5626jgo5bj" path="res://assets/sprites/character_selection/caroline_pixel.png" id="8_4sehx"]
+
+[node name="CharacterSelection" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yo2e5")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("1_jd0au")
+
+[node name="BillyButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture_hover = ExtResource("2_3prnw")
+
+[node name="BillyPixelSilhoutte" type="TextureRect" parent="BillyButton"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -219.0
+offset_top = -219.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("4_3etw0")
+
+[node name="BillyPixel" type="TextureRect" parent="BillyButton"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -219.0
+offset_top = -290.0
+offset_right = 74.0
+offset_bottom = 3.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("5_xjg1p")
+
+[node name="CarolineButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -548.0
+offset_top = -360.0
+offset_bottom = 360.0
+grow_horizontal = 0
+grow_vertical = 2
+texture_hover = ExtResource("6_a8bgd")
+
+[node name="CarolinePixelSilhoutte" type="TextureRect" parent="CarolineButton"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -219.0
+offset_right = 219.0
+grow_vertical = 0
+texture = ExtResource("7_klm6k")
+
+[node name="CarolinePixel" type="TextureRect" parent="CarolineButton"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -72.0
+offset_top = -290.0
+offset_right = 221.0
+offset_bottom = 3.0
+grow_vertical = 0
+texture = ExtResource("8_4sehx")
+
+[connection signal="mouse_entered" from="BillyButton" to="." method="_on_billy_button_mouse_entered"]
+[connection signal="mouse_exited" from="BillyButton" to="." method="_on_billy_button_mouse_exited"]
+[connection signal="pressed" from="BillyButton" to="." method="_on_billy_button_pressed"]
+[connection signal="mouse_entered" from="CarolineButton" to="." method="_on_caroline_button_mouse_entered"]
+[connection signal="mouse_exited" from="CarolineButton" to="." method="_on_caroline_button_mouse_exited"]
+[connection signal="pressed" from="CarolineButton" to="." method="_on_caroline_button_pressed"]
