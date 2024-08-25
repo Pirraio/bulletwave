@@ -1,11 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://dw8jd3g4gipfx"]
+[gd_scene load_steps=10 format=3 uid="uid://b1f7gubgabaim"]
 
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_t8pb2"]
-[ext_resource type="Texture2D" uid="uid://dqk05e45yh3ps" path="res://assets/sprites/players/caroline_idle.png" id="2_2ed2o"]
-[ext_resource type="Texture2D" uid="uid://cog3fv4tpkavg" path="res://assets/sprites/players/caroline_walk.png" id="3_h1bys"]
-[ext_resource type="Texture2D" uid="uid://cj6g5gg0uq4hm" path="res://assets/sprites/guns/guns.png" id="4_0puwn"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_0s3vk"]
+[ext_resource type="Texture2D" uid="uid://bmukelb71n3er" path="res://assets/sprites/players/billy_idle.png" id="1_y0x46"]
+[ext_resource type="Texture2D" uid="uid://2o6r5dcyxfvr" path="res://assets/sprites/players/billy_walk.png" id="2_3v3md"]
+[ext_resource type="Texture2D" uid="uid://cj6g5gg0uq4hm" path="res://assets/sprites/guns/guns.png" id="4_d70fs"]
 
-[sub_resource type="Animation" id="Animation_swnib"]
+[sub_resource type="Animation" id="Animation_164t4"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -17,7 +17,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_2ed2o")]
+"values": [ExtResource("1_y0x46")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -56,7 +56,7 @@ tracks/3/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_4loba"]
+[sub_resource type="Animation" id="Animation_3n2d3"]
 resource_name = "idle"
 length = 1.2
 loop_mode = 1
@@ -71,7 +71,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_2ed2o")]
+"values": [ExtResource("1_y0x46")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -110,7 +110,7 @@ tracks/3/keys = {
 "values": [0, 1]
 }
 
-[sub_resource type="Animation" id="Animation_cvp7i"]
+[sub_resource type="Animation" id="Animation_mcd4e"]
 resource_name = "walk"
 length = 0.8
 loop_mode = 1
@@ -125,7 +125,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_h1bys")]
+"values": [ExtResource("2_3v3md")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -164,52 +164,45 @@ tracks/3/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_stdk0"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3kmeo"]
 _data = {
-"RESET": SubResource("Animation_swnib"),
-"idle": SubResource("Animation_4loba"),
-"walk": SubResource("Animation_cvp7i")
+"RESET": SubResource("Animation_164t4"),
+"idle": SubResource("Animation_3n2d3"),
+"walk": SubResource("Animation_mcd4e")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ivjeu"]
-size = Vector2(15, 23.7)
+size = Vector2(15.1, 22)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_as15t"]
-size = Vector2(8.80001, 6.8)
-
-[node name="PlayerCaroline" type="CharacterBody2D"]
+[node name="PlayerBilly" type="CharacterBody2D"]
 position = Vector2(522, 345)
 scale = Vector2(5, 5)
 collision_layer = 2
-script = ExtResource("1_t8pb2")
+script = ExtResource("1_0s3vk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_2ed2o")
+texture = ExtResource("1_y0x46")
 hframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_stdk0")
+"": SubResource("AnimationLibrary_3kmeo")
 }
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.150002)
+position = Vector2(0.550003, 7.62939e-06)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_ivjeu")
 
 [node name="Gun" type="Node2D" parent="."]
 
 [node name="Area2D" type="Area2D" parent="Gun"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Gun/Area2D"]
-position = Vector2(10.8, 0.800003)
-scale = Vector2(1, 1)
-shape = SubResource("RectangleShape2D_as15t")
-
 [node name="Sprite2D" type="Sprite2D" parent="Gun/Area2D"]
 position = Vector2(10.6, 0.8)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_0puwn")
+scale = Vector2(0.576923, 0.576923)
+texture = ExtResource("4_d70fs")
 region_enabled = true
 region_rect = Rect2(0, 99, 17, 13)
 
