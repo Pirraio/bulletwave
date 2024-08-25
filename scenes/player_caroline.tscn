@@ -203,7 +203,6 @@ shape = SubResource("RectangleShape2D_ivjeu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Gun/Area2D"]
 position = Vector2(10.8, 0.800003)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_as15t")
 
 [node name="Sprite2D" type="Sprite2D" parent="Gun/Area2D"]

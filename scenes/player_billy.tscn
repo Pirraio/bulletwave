@@ -192,7 +192,6 @@ autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.550003, 7.62939e-06)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_ivjeu")
 
 [node name="Gun" type="Node2D" parent="."]
