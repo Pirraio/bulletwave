@@ -5,8 +5,7 @@ extends Control
 @onready var caroline_pixel_silhoutte = $CarolineButton/CarolinePixelSilhoutte
 @onready var caroline_pixel = $CarolineButton/CarolinePixel
 
-var billy_scene = preload("res://scenes/player_billy.tscn")
-var caroline_scene = preload("res://scenes/player_caroline.tscn")
+var world = preload("res://scenes/world.tscn")
 
 func _ready():
 	billy_pixel_silhoutte.show()
@@ -34,8 +33,10 @@ func _on_caroline_button_mouse_exited():
 
 
 func _on_billy_button_pressed():
-	get_tree().change_scene_to_packed(billy_scene)
+	Global.character = "billy"
+	get_tree().change_scene_to_packed(world)
 
 
 func _on_caroline_button_pressed():
-	get_tree().change_scene_to_packed(caroline_scene)
+	Global.character = "caroline"
+	get_tree().change_scene_to_packed(world)
