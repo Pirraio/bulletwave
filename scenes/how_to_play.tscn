@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://baboic86efrj1"]
+
+[ext_resource type="Texture2D" uid="uid://vlm51aof6d8r" path="res://assets/sprites/menu/howtoplay.png" id="1_y4dp5"]
+[ext_resource type="Script" path="res://scripts/how_to_play.gd" id="1_yho14"]
+[ext_resource type="Texture2D" uid="uid://dg80fbkd41kbq" path="res://assets/sprites/menu/buttons/back1.png" id="2_d7oxn"]
+[ext_resource type="Texture2D" uid="uid://bvipnned7klg6" path="res://assets/sprites/menu/buttons/back2.png" id="3_rnkxl"]
+[ext_resource type="AudioStream" uid="uid://bh2f1vlnp748a" path="res://assets/audio/menu/select.wav" id="5_3gcnx"]
+
+[node name="HowToPlay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yho14")
+
+[node name="Instructions" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_y4dp5")
+
+[node name="BackButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.842
+anchor_right = 0.5
+anchor_bottom = 0.842
+offset_left = -119.5
+offset_top = -66.2401
+offset_right = 119.5
+offset_bottom = -0.240051
+grow_horizontal = 2
+texture_normal = ExtResource("2_d7oxn")
+texture_hover = ExtResource("3_rnkxl")
+
+[node name="HoverSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_3gcnx")
+
+[connection signal="mouse_entered" from="BackButton" to="." method="_on_back_button_mouse_entered"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

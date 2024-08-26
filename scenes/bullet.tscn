@@ -7,6 +7,7 @@
 radius = 8.0
 
 [node name="Bullet" type="Area2D"]
+scale = Vector2(0.2, 0.2)
 script = ExtResource("1_mcjak")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -17,4 +18,5 @@ texture = ExtResource("1_ak1p4")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

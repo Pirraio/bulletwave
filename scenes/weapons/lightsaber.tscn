@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxc43ki0sesv3"]
+
+[ext_resource type="Texture2D" uid="uid://dk0qtxex4ow48" path="res://assets/sprites/weapons/weapons_sprites.png" id="1_33inm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5usa4"]
+size = Vector2(37, 8)
+
+[node name="Lightsaber" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2.5, 0)
+shape = SubResource("RectangleShape2D_5usa4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_33inm")
+region_enabled = true
+region_rect = Rect2(175.852, 66.8038, 35.3999, 12.2673)

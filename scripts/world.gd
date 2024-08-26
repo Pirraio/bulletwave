@@ -1,14 +1,13 @@
 extends Node2D
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	#var player_character = load("res://scenes/" + Global.character).instance() #ISSO NÃO FUNCIONOU
-	#add_child(player_character)
-	print(Global.character) #Está Printando corretamente
+	var player_character = load("res://scenes/player_" + Global.character + ".tscn").instantiate()
+	player_character.position = Vector2(640, 360)
+	add_child(player_character)
+	print(Global.character)
 	pass
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass

@@ -1,7 +1,7 @@
 extends Node
 
 var health = 100
-var character = ""
+var character = "billy" #default character
 
 
 
