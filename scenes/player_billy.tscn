@@ -1,12 +1,14 @@
-[gd_scene load_steps=18 format=3 uid="uid://b1f7gubgabaim"]
+[gd_scene load_steps=20 format=3 uid="uid://b1f7gubgabaim"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_0s3vk"]
 [ext_resource type="Texture2D" uid="uid://bmukelb71n3er" path="res://assets/sprites/players/billy_idle.png" id="1_y0x46"]
 [ext_resource type="Texture2D" uid="uid://2o6r5dcyxfvr" path="res://assets/sprites/players/billy_walk.png" id="2_3v3md"]
 [ext_resource type="Texture2D" uid="uid://el3jvla3vcyv" path="res://assets/sprites/players/billy_dodge.png" id="4_3tjfc"]
 [ext_resource type="Texture2D" uid="uid://dk0qtxex4ow48" path="res://assets/sprites/weapons/weapons_sprites.png" id="5_x4fvk"]
-[ext_resource type="AudioStream" uid="uid://b88h33u5bgs6e" path="res://assets/audio/weapons/pistols/9mm Single Isolated.wav" id="6_qeluq"]
+[ext_resource type="AudioStream" uid="uid://b88h33u5bgs6e" path="res://assets/audio/weapons/pistols/pistol_shot.wav" id="6_qeluq"]
+[ext_resource type="AudioStream" uid="uid://di5p3gamox4oi" path="res://assets/audio/weapons/pistols/reload.wav" id="7_8deds"]
 [ext_resource type="AudioStream" uid="uid://bowiaq3fuww7y" path="res://assets/audio/player/dodge.wav" id="7_d0t3b"]
+[ext_resource type="Script" path="res://scripts/camera_2d.gd" id="9_je5op"]
 
 [sub_resource type="Animation" id="Animation_164t4"]
 length = 0.001
@@ -243,7 +245,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Rect2(176.553, 68.3093, 30.1425, 8.76234)]
+"values": [Rect2(0, 0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_vuhyr"]
@@ -302,20 +304,19 @@ position = Vector2(0, 0.150002)
 shape = SubResource("RectangleShape2D_ivjeu")
 
 [node name="Weapon" type="Node2D" parent="."]
-position = Vector2(0, 0.2)
+position = Vector2(0, -1.21593e-05)
 scale = Vector2(0.5, 0.5)
 
 [node name="Axis" type="Node2D" parent="Weapon"]
-position = Vector2(20, 7.59998)
+position = Vector2(0, 3.8147e-06)
 
 [node name="Sprite2D" type="Sprite2D" parent="Weapon/Axis"]
-position = Vector2(0.800049, -0.400024)
+position = Vector2(24, 2)
 texture = ExtResource("5_x4fvk")
 region_enabled = true
-region_rect = Rect2(176.553, 68.3093, 30.1425, 8.76234)
 
 [node name="BulletSpawnPoint" type="Node2D" parent="Weapon/Axis/Sprite2D"]
-position = Vector2(11.2, -3.59995)
+position = Vector2(12, 2.55108e-05)
 
 [node name="WeaponChanger" type="AnimationPlayer" parent="Weapon/Axis"]
 libraries = {
@@ -326,11 +327,23 @@ autoplay = "pistol"
 [node name="ShotSound" type="AudioStreamPlayer2D" parent="Weapon"]
 stream = ExtResource("6_qeluq")
 
+[node name="ReloadSound" type="AudioStreamPlayer2D" parent="Weapon"]
+stream = ExtResource("7_8deds")
+
 [node name="DodgeSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_d0t3b")
 volume_db = -5.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
+script = ExtResource("9_je5op")
+
+[node name="AmmoCount" type="Label" parent="."]
+offset_left = 110.0
+offset_top = -88.0
+offset_right = 150.0
+offset_bottom = -65.0
+text = "6/12"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="finished" from="Weapon/ReloadSound" to="." method="_on_reload_sound_finished"]

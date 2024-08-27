@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://d4kgjwxsnpbff"
-path="res://.godot/imported/9mm Pistol Rack Full.wav-cd49fb468d6cd3c69764c8a6c187bf33.sample"
+path="res://.godot/imported/ammo_pickup.wav-048e17103e2c9c708931305fc6073f00.sample"
 
 [deps]
 
-source_file="res://assets/audio/weapons/pistols/9mm Pistol Rack Full.wav"
-dest_files=["res://.godot/imported/9mm Pistol Rack Full.wav-cd49fb468d6cd3c69764c8a6c187bf33.sample"]
+source_file="res://assets/audio/weapons/pistols/ammo_pickup.wav"
+dest_files=["res://.godot/imported/ammo_pickup.wav-048e17103e2c9c708931305fc6073f00.sample"]
 
 [params]
 

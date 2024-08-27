@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cog3fv4tpkavg" path="res://assets/sprites/players/caroline_walk.png" id="3_h1bys"]
 [ext_resource type="Texture2D" uid="uid://cadb2tjhvfykd" path="res://assets/sprites/players/caroline_dodge.png" id="4_65mkt"]
 [ext_resource type="Texture2D" uid="uid://dk0qtxex4ow48" path="res://assets/sprites/weapons/weapons_sprites.png" id="5_yj7sf"]
-[ext_resource type="AudioStream" uid="uid://b88h33u5bgs6e" path="res://assets/audio/weapons/pistols/9mm Single Isolated.wav" id="6_o36jo"]
+[ext_resource type="AudioStream" uid="uid://b88h33u5bgs6e" path="res://assets/audio/weapons/pistols/pistol_shot.wav" id="6_o36jo"]
 [ext_resource type="AudioStream" uid="uid://bowiaq3fuww7y" path="res://assets/audio/player/dodge.wav" id="7_vhilt"]
 
 [sub_resource type="Animation" id="Animation_swnib"]

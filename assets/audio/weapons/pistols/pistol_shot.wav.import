@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://b88h33u5bgs6e"
-path="res://.godot/imported/9mm Single Isolated.wav-b1e0efd273a23e1ac914a9959f9121a2.sample"
+path="res://.godot/imported/pistol_shot.wav-6188edc068f43d69740450d0f4a41b4d.sample"
 
 [deps]
 
-source_file="res://assets/audio/weapons/pistols/9mm Single Isolated.wav"
-dest_files=["res://.godot/imported/9mm Single Isolated.wav-b1e0efd273a23e1ac914a9959f9121a2.sample"]
+source_file="res://assets/audio/weapons/pistols/pistol_shot.wav"
+dest_files=["res://.godot/imported/pistol_shot.wav-6188edc068f43d69740450d0f4a41b4d.sample"]
 
 [params]
 

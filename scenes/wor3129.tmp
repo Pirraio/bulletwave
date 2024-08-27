@@ -125,9 +125,8 @@ texture = ExtResource("2_k6jcy")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_uh7on")
 
-[node name="World" type="Node2D" node_paths=PackedStringArray("tile_map")]
+[node name="World" type="Node2D"]
 script = ExtResource("1_xmham")
-tile_map = NodePath("TileMapLayer")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(640, 360)

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjt3lqbw37l74"]
+
+[ext_resource type="Texture2D" uid="uid://dagammg0lrvhk" path="res://assets/sprites/items/ammo-rifle 32px.png" id="1_nvnw5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ssc5u"]
+size = Vector2(20, 21)
+
+[node name="Ammo" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_nvnw5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_ssc5u")

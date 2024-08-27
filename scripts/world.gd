@@ -1,13 +1,30 @@
 extends Node2D
+@onready var ammo_pickup_sound = $Ammo/PickupSound
+
+@export var tile_map:TileMapLayer
 
 
 func _ready():
 	var player_character = load("res://scenes/player_" + Global.character + ".tscn").instantiate()
 	player_character.position = Vector2(640, 360)
 	add_child(player_character)
-	print(Global.character)
-	pass
+
 
 
 func _process(delta):
 	pass
+
+
+func _on_lightsaber_body_entered(body):
+	Global.current_weapon = "lightsaber"
+
+
+func _on_ammo_body_entered(body):
+	Global.total_ammo += 6
+	if Global.magazine == 0:
+		Global.magazine = Global.total_ammo
+	print(Global.total_ammo)
+	print(Global.magazine)
+	ammo_pickup_sound.play()
+	
+	#get_node("Ammo").queue_free()
