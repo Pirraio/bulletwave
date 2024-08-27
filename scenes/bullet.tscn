@@ -1,22 +1,31 @@
 [gd_scene load_steps=4 format=3 uid="uid://d2rhu87afyynr"]
 
-[ext_resource type="Texture2D" uid="uid://dtcy7dh61vh21" path="res://assets/sprites/bullet_temp.png" id="1_ak1p4"]
 [ext_resource type="Script" path="res://scripts/bullet.gd" id="1_mcjak"]
+[ext_resource type="Texture2D" uid="uid://brjmdr8buil4g" path="res://scenes/bullet_sprite.png" id="2_g8xt1"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0tw3w"]
-radius = 8.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qtoll"]
+radius = 10.0
+height = 30.0
 
 [node name="Bullet" type="Area2D"]
 scale = Vector2(0.2, 0.2)
 script = ExtResource("1_mcjak")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_0tw3w")
+shape = SubResource("CapsuleShape2D_qtoll")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_ak1p4")
+position = Vector2(10, -1.00974e-28)
+rotation = 1.5708
+scale = Vector2(3, 3)
+texture = ExtResource("2_g8xt1")
+hframes = 40
+vframes = 23
+frame = 884
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(1.25, -1.25)
+scale = Vector2(1.375, 1.625)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

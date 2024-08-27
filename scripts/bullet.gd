@@ -4,8 +4,9 @@ extends Area2D
 @export var damage: int = 50
 var direction: Vector2
 
-func setup(dir: Vector2) -> void:
+func setup(dir: Vector2, speed=self.speed) -> void:
 	direction = dir
+	self.speed = speed
 
 
 func _ready() -> void:

@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=4 uid="uid://cml62a801d1wi"]
+[gd_scene load_steps=9 format=4 uid="uid://cml62a801d1wi"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_xmham"]
 [ext_resource type="Texture2D" uid="uid://dw6a3ql3vmn8m" path="res://assets/sprites/tilemap/tileset_retrowave.png" id="2_k6jcy"]
 [ext_resource type="PackedScene" uid="uid://dxc43ki0sesv3" path="res://scenes/weapons/lightsaber.tscn" id="3_abc8x"]
 [ext_resource type="PackedScene" uid="uid://cjt3lqbw37l74" path="res://scenes/items/ammo.tscn" id="4_7c05a"]
 [ext_resource type="AudioStream" uid="uid://d4kgjwxsnpbff" path="res://assets/audio/weapons/pistols/ammo_pickup.wav" id="5_s1exr"]
+[ext_resource type="PackedScene" uid="uid://cx8safs4axwv2" path="res://scenes/enemy/enemy.tscn" id="6_hx2is"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uh7on"]
 texture = ExtResource("2_k6jcy")
@@ -143,6 +144,22 @@ scale = Vector2(0.5, 0.5)
 
 [node name="PickupSound" type="AudioStreamPlayer2D" parent="Ammo"]
 stream = ExtResource("5_s1exr")
+
+[node name="Enemy" parent="." instance=ExtResource("6_hx2is")]
+position = Vector2(841, 312)
+scale = Vector2(0.11, 0.11)
+
+[node name="Enemy2" parent="." instance=ExtResource("6_hx2is")]
+position = Vector2(860, 332)
+scale = Vector2(0.11, 0.11)
+
+[node name="Enemy3" parent="." instance=ExtResource("6_hx2is")]
+position = Vector2(841, 390)
+scale = Vector2(0.11, 0.11)
+
+[node name="Enemy4" parent="." instance=ExtResource("6_hx2is")]
+position = Vector2(842, 360)
+scale = Vector2(0.11, 0.11)
 
 [connection signal="body_entered" from="Lightsaber" to="." method="_on_lightsaber_body_entered"]
 [connection signal="body_entered" from="Ammo" to="." method="_on_ammo_body_entered"]

@@ -3,7 +3,6 @@ extends Node2D
 
 @export var tile_map:TileMapLayer
 
-
 func _ready():
 	var player_character = load("res://scenes/player_" + Global.character + ".tscn").instantiate()
 	player_character.position = Vector2(640, 360)

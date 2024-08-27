@@ -24,9 +24,14 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		changeWeaponRotation(event.position)
 
-func _ready():
+func _ready() -> void:
 	Input.set_custom_mouse_cursor(CROSSHAIR, Input.CURSOR_ARROW, Vector2(16, 16))
+	Global.player = self
 	
+
+func _exit_tree() -> void:
+	Global.player = null
+
 
 func _physics_process(_delta):
 	var dir: Vector2 = Vector2(Input.get_axis("move_left", "move_right"), Input.get_axis("move_up", "move_down"))
