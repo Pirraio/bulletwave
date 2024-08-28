@@ -71,8 +71,7 @@ func _on_reload_timer_timeout() -> void:
 
 func hurt(damage):
 	health -= damage
-	if health > 0:
-		flash_white_and_shake()
+	flash_white_and_shake()
 	if health <= 0:
 		queue_free()
 	

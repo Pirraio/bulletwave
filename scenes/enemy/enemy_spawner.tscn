@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://belpyrnw4eomm"]
+
+[ext_resource type="Script" path="res://scripts/enemy_spawner.gd" id="1_qqspu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lijj5"]
+size = Vector2(25, 46.5)
+
+[node name="EnemySpawner" type="Area2D"]
+script = ExtResource("1_qqspu")
+max_enemies = 12
+min_spawn_timer = 1
+max_spawn_timer = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(10.5, 20.75)
+shape = SubResource("RectangleShape2D_lijj5")
+
+[node name="SpawnTimer" type="Timer" parent="."]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+visible = false
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-2, 12, -2, 95, 202, 94, 202, -2, -3, -3)
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
