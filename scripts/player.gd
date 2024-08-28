@@ -75,13 +75,13 @@ func walking_animations(horizontal_direction, vertical_direction, dodging):
 		
 func shoot():
 	if Global.total_ammo > 0 && shotEnable == true:
-		print(Global.total_ammo)
-		print(Global.magazine)
+		#print(Global.total_ammo)
+		#print(Global.magazine)
 		shot_sound.play()
 		var bullet = bullet_scene.instantiate()
 		var mouse_position = get_global_mouse_position()
 		var direction = (mouse_position - position).normalized()
-		bullet.setup(direction)
+		bullet.setup(direction, false)
 		bullet.position = bullet_spawn_pos.global_position
 		self.get_parent().add_child(bullet)
 		Global.magazine -= 1
@@ -137,10 +137,8 @@ func show_ammo(magazine, total_ammo):
 	ammo_count.text += str(ammo_left)
 
 func hurt(damage: int) -> void:
-	
 	print("Player got hurt")
 	Global.health -= damage
 	if Global.health <= 0:
 		print("Player died")
-		queue_free()
 		

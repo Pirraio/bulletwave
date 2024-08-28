@@ -231,7 +231,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ivjeu"]
-size = Vector2(15, 23.7)
+size = Vector2(15, 22)
 
 [sub_resource type="Animation" id="Animation_o3coh"]
 length = 0.001
@@ -300,14 +300,14 @@ libraries = {
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.150002)
+position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_ivjeu")
 
 [node name="Weapon" type="Node2D" parent="."]
 position = Vector2(0, -1.21593e-05)
 scale = Vector2(0.5, 0.5)
 
-[node name="Axis" type="Node2D" parent="Weapon" groups=["player"]]
+[node name="Axis" type="Node2D" parent="Weapon"]
 position = Vector2(0, 3.8147e-06)
 
 [node name="Sprite2D" type="Sprite2D" parent="Weapon/Axis"]

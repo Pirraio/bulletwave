@@ -3,14 +3,14 @@ extends Area2D
 @export var speed: float = 250.0
 @export var damage: int = 1
 var direction: Vector2
+const RIGHT = Vector2.RIGHT
 
-func setup(dir: Vector2, speed=self.speed) -> void:
+var is_from_enemy = false
+
+func setup(dir: Vector2, is_from_enemy, speed=self.speed) -> void:
 	direction = dir
 	self.speed = speed
-
-
-func _ready() -> void:
-	pass
+	self.is_from_enemy = is_from_enemy
 	
 func _physics_process(delta):
 	# Mover a bullet na direção indicada
@@ -18,13 +18,20 @@ func _physics_process(delta):
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
-	queue_free()
+	pass
+	#queue_free()
 
 
 func _on_body_entered(body):
-	if body.is_in_group("enemy"):
+	print(body)
+	if body.is_in_group("enemy") and is_from_enemy:
+		return
+	if body.is_in_group("enemy") and !is_from_enemy:
+		print("hit enemy")
 		body.hurt(damage)
-	if body.is_in_group("player"):
+	if body.is_in_group("player") and is_from_enemy:
+		print("hit")
 		body.hurt(damage)
-	
 	queue_free()
+	
+	

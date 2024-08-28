@@ -146,15 +146,15 @@ scale = Vector2(0.5, 0.5)
 stream = ExtResource("5_s1exr")
 
 [node name="Enemy" parent="." instance=ExtResource("6_hx2is")]
-position = Vector2(841, 312)
+position = Vector2(852, 322)
+scale = Vector2(0.11, 0.11)
+
+[node name="Enemy2" parent="." instance=ExtResource("6_hx2is")]
+position = Vector2(857, 392)
 scale = Vector2(0.11, 0.11)
 
 [node name="Enemy3" parent="." instance=ExtResource("6_hx2is")]
-position = Vector2(841, 390)
-scale = Vector2(0.11, 0.11)
-
-[node name="Enemy4" parent="." instance=ExtResource("6_hx2is")]
-position = Vector2(842, 360)
+position = Vector2(822, 362)
 scale = Vector2(0.11, 0.11)
 
 [connection signal="body_entered" from="Lightsaber" to="." method="_on_lightsaber_body_entered"]

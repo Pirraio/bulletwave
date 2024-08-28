@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://brjmdr8buil4g" path="res://scenes/bullet_sprite.png" id="2_g8xt1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qtoll"]
-radius = 10.0
 height = 40.0
 
 [node name="Bullet" type="Area2D"]

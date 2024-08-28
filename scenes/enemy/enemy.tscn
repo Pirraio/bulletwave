@@ -1,25 +1,28 @@
 [gd_scene load_steps=4 format=3 uid="uid://cx8safs4axwv2"]
 
-[ext_resource type="Script" path="res://scenes/enemy/enemy.gd" id="1_k5ewx"]
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_k5ewx"]
 [ext_resource type="Texture2D" uid="uid://cpaiksinga7gc" path="res://assets/sprites/character_selection/billy_pixel.png" id="1_k5vw8"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wmb4t"]
-size = Vector2(168, 248)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1fxqh"]
+size = Vector2(169, 252)
 
-[node name="Enemy" type="Area2D" groups=["enemy"]]
+[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_k5ewx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_k5vw8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(6, 0)
-shape = SubResource("RectangleShape2D_wmb4t")
+position = Vector2(5.5, -4)
+shape = SubResource("RectangleShape2D_1fxqh")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-target_position = Vector2(400, 0)
+target_position = Vector2(600, 0)
 
 [node name="ReloadTimer" type="Timer" parent="RayCast2D"]
 wait_time = 0.783
+
+[node name="BulletSpawnPoint" type="Node2D" parent="."]
+position = Vector2(121.14, 0)
 
 [connection signal="timeout" from="RayCast2D/ReloadTimer" to="." method="_on_reload_timer_timeout"]
