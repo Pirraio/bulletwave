@@ -36,6 +36,11 @@ func _physics_process(delta: float) -> void:
 		follow_player()
 
 	global_position += velocity * speed * delta
+	
+	if self.position.x < Global.player.position.x:
+		sprite.flip_h = true
+	else:
+		sprite.flip_h = false
 
 func follow_player():
 	if Global.player != null:
