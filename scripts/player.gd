@@ -136,11 +136,11 @@ func show_ammo(magazine, total_ammo):
 	ammo_count.text += "/"
 	ammo_count.text += str(ammo_left)
 
-func hurt(damage: int) -> void:
-	
-	print("Player got hurt")
-	Global.health -= damage
-	if Global.health <= 0:
-		print("Player died")
-		queue_free()
+#func hurt(damage: int) -> void:
+	#
+	#print("Player got hurt")
+	#Global.health -= damage
+	#if Global.health <= 0:
+		#print("Player died")
+		#queue_free()
 		
