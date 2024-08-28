@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var bullet_scene = preload("res://scenes/bullet.tscn")
 @onready var rayCast = $RayCast2D
 @onready var reloadTimer =  $RayCast2D/ReloadTimer
+@onready var sprite = $Sprite2D
 
 @export var fire_rate = 1 #shoots per second
 @export var bullet_speed = 130
@@ -66,6 +67,14 @@ func _on_reload_timer_timeout() -> void:
 
 func hurt(damage):
 	health -= damage
+	if health > 0:
+		flash_white()
 	if health <= 0:
 		queue_free()
+	
+func flash_white() -> void:
+	print("change color")
+	sprite.modulate = Color(100, 100, 100)
+	await get_tree().create_timer(0.05).timeout 
+	sprite.modulate = Color(1, 1, 1, 1)
 	
