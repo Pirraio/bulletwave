@@ -9,10 +9,11 @@ extends CharacterBody2D
 @onready var shot_sound = $Weapon/ShotSound
 @onready var weapon_changer = $Weapon/Axis/WeaponChanger
 @onready var reload_sound = $Weapon/ReloadSound
-@onready var ammo_count = $AmmoCount
+@onready var ammo_count = $HUD/AmmoCount
 
 @onready var original_position = position #for shake
 @onready var bullet_scene = preload("res://scenes/bullet.tscn")
+var game_over_screen = preload("res://scenes/game_over.tscn")
 
 @export var speed = 100
 
@@ -141,7 +142,7 @@ func hurt(damage: int) -> void:
 	Global.health -= damage
 	flash_white_and_shake()
 	if Global.health <= 0:
-		print("Player died")
+		get_tree().change_scene_to_packed(game_over_screen)
 	
 func flash_white_and_shake() -> void:
 	sprite.modulate = Color(100, 1, 1)
@@ -151,15 +152,16 @@ func flash_white_and_shake() -> void:
 
 
 func shake() -> void:
-	original_position = position
-	var shake_magnitude = .5
-	var shake_duration = 0.1
-	var elapsed_time = 0.0
+	pass
+	#original_position = position
+	#var shake_magnitude = .5
+	#var shake_duration = 0.1
+	#var elapsed_time = 0.0
+#
+	#while elapsed_time < shake_duration:
+		#var random_offset = Vector2(randf_range(-shake_magnitude, shake_magnitude), randf_range(-shake_magnitude, shake_magnitude))
+		#position = original_position + random_offset
+		#await get_tree().process_frame
+		#elapsed_time += get_process_delta_time()
 
-	while elapsed_time < shake_duration:
-		var random_offset = Vector2(randf_range(-shake_magnitude, shake_magnitude), randf_range(-shake_magnitude, shake_magnitude))
-		position = original_position + random_offset
-		await get_tree().process_frame
-		elapsed_time += get_process_delta_time()
-
-	position = original_position 
+	#position = original_position 

@@ -1,0 +1,84 @@
+[gd_scene load_steps=8 format=3 uid="uid://cd20uhe38r4na"]
+
+[ext_resource type="Script" path="res://scripts/game_over.gd" id="1_0wks5"]
+[ext_resource type="FontFile" uid="uid://cwdj5f20i7q4b" path="res://assets/fonts/DAGGERSQUARE.otf" id="2_gdj85"]
+[ext_resource type="Texture2D" uid="uid://dmkq1kka53cy5" path="res://assets/sprites/game_over/try_again1.png" id="3_gybc1"]
+[ext_resource type="Texture2D" uid="uid://dcrfoxx0qbfij" path="res://assets/sprites/game_over/try_again2.png" id="4_fvvu0"]
+[ext_resource type="Texture2D" uid="uid://ckpd5qlr5wgno" path="res://assets/sprites/game_over/exit_menu1.png" id="5_a5e11"]
+[ext_resource type="Texture2D" uid="uid://bg8porip3kqy6" path="res://assets/sprites/game_over/exit_menu2.png" id="6_ggoem"]
+[ext_resource type="AudioStream" uid="uid://bh2f1vlnp748a" path="res://assets/audio/menu/select.wav" id="7_xqw42"]
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0wks5")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="GameOverMessage" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -403.5
+offset_top = -91.5
+offset_right = 403.5
+offset_bottom = 91.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_gdj85")
+theme_override_font_sizes/font_size = 152
+text = "GAME OVER"
+
+[node name="TryAgainButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -367.0
+offset_top = 114.0
+offset_right = 367.0
+offset_bottom = 172.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("3_gybc1")
+texture_hover = ExtResource("4_fvvu0")
+
+[node name="ExitToMenuButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -368.5
+offset_top = 217.0
+offset_right = 368.5
+offset_bottom = 275.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("5_a5e11")
+texture_hover = ExtResource("6_ggoem")
+
+[node name="HoverButtonSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_xqw42")
+
+[connection signal="mouse_entered" from="TryAgainButton" to="." method="_on_try_again_button_mouse_entered"]
+[connection signal="pressed" from="TryAgainButton" to="." method="_on_try_again_button_pressed"]
+[connection signal="mouse_entered" from="ExitToMenuButton" to="." method="_on_exit_to_menu_button_mouse_entered"]
+[connection signal="pressed" from="ExitToMenuButton" to="." method="_on_exit_to_menu_button_pressed"]
