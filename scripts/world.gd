@@ -19,9 +19,9 @@ func _ready():
 
 
 func _process(delta):
-	if Global.enemyCount >= 10:
+	if Global.enemyCount >= 1:
 		Global.enemyCount = 0
-		get_tree().change_scene_to_file("res://scenes/menu.tscn")
+		get_tree().change_scene_to_file("res://scenes/win.tscn")
 
 
 func _on_lightsaber_body_entered(body):

@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://bj48jb0n6hc37"]
+
+[ext_resource type="Script" path="res://scripts/win.gd" id="1_7u86v"]
+[ext_resource type="FontFile" uid="uid://cwdj5f20i7q4b" path="res://assets/fonts/DAGGERSQUARE.otf" id="1_rhy7w"]
+[ext_resource type="Texture2D" uid="uid://ckpd5qlr5wgno" path="res://assets/sprites/game_over/exit_menu1.png" id="3_ic4fk"]
+[ext_resource type="Texture2D" uid="uid://bg8porip3kqy6" path="res://assets/sprites/game_over/exit_menu2.png" id="4_voxb8"]
+[ext_resource type="AudioStream" uid="uid://bh2f1vlnp748a" path="res://assets/audio/menu/select.wav" id="5_5hamq"]
+
+[node name="Win" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7u86v")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -54.5
+offset_top = -24.5
+offset_right = 54.5
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_rhy7w")
+theme_override_font_sizes/font_size = 128
+text = "PARABÉNS
+VOCÊ VENCEU"
+horizontal_alignment = 1
+
+[node name="ExitToMenuButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -368.5
+offset_top = 204.0
+offset_right = 368.5
+offset_bottom = 262.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("3_ic4fk")
+texture_hover = ExtResource("4_voxb8")
+
+[node name="HoverSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_5hamq")
+
+[connection signal="pressed" from="ExitToMenuButton" to="." method="_on_exit_to_menu_button_pressed"]
