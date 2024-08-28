@@ -27,10 +27,10 @@ func _on_body_entered(body):
 	if body.is_in_group("enemy") and is_from_enemy:
 		return
 	if body.is_in_group("enemy") and !is_from_enemy:
-		print("hit enemy")
 		body.hurt(damage)
 	if body.is_in_group("player") and is_from_enemy:
-		print("hit")
+		if Global.player.is_player_dodging():
+			return
 		body.hurt(damage)
 	queue_free()
 	

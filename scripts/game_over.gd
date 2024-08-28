@@ -5,6 +5,7 @@ var menu = preload("res://scenes/main.tscn")
 var world = preload("res://scenes/world.tscn")
 
 func _on_try_again_button_pressed():
+	Global.health = 3
 	get_tree().change_scene_to_packed(world)
 
 

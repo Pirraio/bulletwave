@@ -2,10 +2,10 @@ extends Node2D
 @onready var ammo_pickup_sound = $Ammo/PickupSound
 
 @export var tile_map:TileMapLayer
-
+@onready var player_spawn_point = $PlayerSpawnPoint
 func _ready():
 	var player_character = load("res://scenes/player_" + Global.character + ".tscn").instantiate()
-	player_character.position = Vector2(640, 360)
+	player_character.position = player_spawn_point.position
 	add_child(player_character)
 
 

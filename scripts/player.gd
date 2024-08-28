@@ -29,6 +29,8 @@ func _ready() -> void:
 	Input.set_custom_mouse_cursor(CROSSHAIR, Input.CURSOR_ARROW, Vector2(16, 16))
 	Global.player = self
 	
+func is_player_dodging() -> bool:
+	return is_dodging
 
 func _exit_tree() -> void:
 	Global.player = null
@@ -39,7 +41,6 @@ func _physics_process(_delta):
 	var dodge = Input.is_action_just_pressed("dodge")
 	var reload_action = Input.is_action_just_pressed("reload")
 	show_ammo(Global.magazine, Global.total_ammo)
-	
 
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
@@ -109,8 +110,6 @@ func reload_press():
 		else:
 			Global.magazine = Global.total_ammo
 	
-			
-		
 
 func changeWeaponRotation(mouse_pos: Vector2):
 	weapon.look_at(mouse_pos)
@@ -152,16 +151,15 @@ func flash_white_and_shake() -> void:
 
 
 func shake() -> void:
-	pass
-	#original_position = position
-	#var shake_magnitude = .5
-	#var shake_duration = 0.1
-	#var elapsed_time = 0.0
-#
-	#while elapsed_time < shake_duration:
-		#var random_offset = Vector2(randf_range(-shake_magnitude, shake_magnitude), randf_range(-shake_magnitude, shake_magnitude))
-		#position = original_position + random_offset
-		#await get_tree().process_frame
-		#elapsed_time += get_process_delta_time()
+	original_position = position
+	var shake_magnitude = .5
+	var shake_duration = 0.1
+	var elapsed_time = 0.0
 
-	#position = original_position 
+	while elapsed_time < shake_duration:
+		var random_offset = Vector2(randf_range(-shake_magnitude, shake_magnitude), randf_range(-shake_magnitude, shake_magnitude))
+		position = original_position + random_offset
+		#await get_tree().process_frame #linha esta com bug que crasha o jogo ao morrer
+		elapsed_time += get_process_delta_time()
+
+	position = original_position 

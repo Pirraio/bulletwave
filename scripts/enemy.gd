@@ -8,7 +8,7 @@ extends CharacterBody2D
 @onready var original_position = position #for shake
 
 @export var fire_rate = 1 #shoots per second
-@export var bullet_speed = 130
+@export var bullet_speed = 100
 @export var speed = 10
 
 
@@ -91,7 +91,7 @@ func shake() -> void:
 	while elapsed_time < shake_duration:
 		var random_offset = Vector2(randf_range(-shake_magnitude, shake_magnitude), randf_range(-shake_magnitude, shake_magnitude))
 		position = original_position + random_offset
-		await get_tree().process_frame
+		#await get_tree().process_frame
 		elapsed_time += get_process_delta_time()
 
 	position = original_position 
