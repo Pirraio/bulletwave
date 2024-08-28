@@ -6,6 +6,7 @@ var current_weapon = ""
 var total_ammo = 12
 var magazine = 6
 var player = null
+var enemyCount = 0
 
 func start_game():
 	health = 3

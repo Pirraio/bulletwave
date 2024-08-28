@@ -3,15 +3,23 @@ extends Node2D
 
 @export var tile_map:TileMapLayer
 @onready var player_spawn_point = $PlayerSpawnPoint
+
+var menu = preload("res://scenes/menu.tscn")
 func _ready():
 	var player_character = load("res://scenes/player_" + Global.character + ".tscn").instantiate()
 	player_character.position = player_spawn_point.position
 	add_child(player_character)
+	Global.total_ammo = 12
+	Global.magazine = 6
+	Global.health = 3
+	Global.enemyCount = 0
+	
 
 
 
 func _process(delta):
-	pass
+	if Global.enemyCount >= 15:
+		get_tree().change_scene_to_packed(menu)
 
 
 func _on_lightsaber_body_entered(body):

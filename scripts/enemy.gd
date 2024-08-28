@@ -73,6 +73,7 @@ func hurt(damage):
 	health -= damage
 	flash_white_and_shake()
 	if health <= 0:
+		Global.enemyCount += 1
 		queue_free()
 	
 func flash_white_and_shake() -> void:

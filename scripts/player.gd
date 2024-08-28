@@ -141,7 +141,10 @@ func hurt(damage: int) -> void:
 	Global.health -= damage
 	flash_white_and_shake()
 	if Global.health <= 0:
-		get_tree().change_scene_to_packed(game_over_screen)
+		call_deferred("game_over")
+		
+func game_over():
+	get_tree().change_scene_to_packed(game_over_screen)
 	
 func flash_white_and_shake() -> void:
 	sprite.modulate = Color(100, 1, 1)

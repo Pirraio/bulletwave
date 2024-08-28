@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bnpb0kh23qob2"]
+[gd_scene load_steps=23 format=3 uid="uid://bnpb0kh23qob2"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_t8pb2"]
 [ext_resource type="Texture2D" uid="uid://dqk05e45yh3ps" path="res://assets/sprites/players/caroline_idle.png" id="2_2ed2o"]
@@ -6,7 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://cadb2tjhvfykd" path="res://assets/sprites/players/caroline_dodge.png" id="4_65mkt"]
 [ext_resource type="Texture2D" uid="uid://dk0qtxex4ow48" path="res://assets/sprites/weapons/weapons_sprites.png" id="5_yj7sf"]
 [ext_resource type="AudioStream" uid="uid://b88h33u5bgs6e" path="res://assets/audio/weapons/pistols/pistol_shot.wav" id="6_o36jo"]
+[ext_resource type="AudioStream" uid="uid://di5p3gamox4oi" path="res://assets/audio/weapons/pistols/reload.wav" id="7_rk52n"]
 [ext_resource type="AudioStream" uid="uid://bowiaq3fuww7y" path="res://assets/audio/player/dodge.wav" id="7_vhilt"]
+[ext_resource type="FontFile" uid="uid://cwdj5f20i7q4b" path="res://assets/fonts/DAGGERSQUARE.otf" id="8_t5ygq"]
+[ext_resource type="Texture2D" uid="uid://drqrtnf40jb40" path="res://assets/sprites/heart_empty.png" id="9_40qr1"]
+[ext_resource type="Texture2D" uid="uid://dy2eugdinewa8" path="res://assets/sprites/heart_full.png" id="10_jjbhy"]
 
 [sub_resource type="Animation" id="Animation_swnib"]
 length = 0.001
@@ -283,7 +287,26 @@ _data = {
 "red_lightsaber": SubResource("Animation_3mdk6")
 }
 
-[node name="PlayerCaroline" type="CharacterBody2D"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_mtjoi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_40qr1")
+}],
+"loop": true,
+"name": &"empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_jjbhy")
+}],
+"loop": true,
+"name": &"full",
+"speed": 5.0
+}]
+
+[node name="PlayerCaroline" type="CharacterBody2D" groups=["player"]]
 position = Vector2(522, 345)
 script = ExtResource("1_t8pb2")
 
@@ -325,6 +348,9 @@ autoplay = "pistol"
 [node name="ShotSound" type="AudioStreamPlayer2D" parent="Weapon"]
 stream = ExtResource("6_o36jo")
 
+[node name="ReloadSound" type="AudioStreamPlayer2D" parent="Weapon"]
+stream = ExtResource("7_rk52n")
+
 [node name="DodgeSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_vhilt")
 volume_db = -5.0
@@ -332,4 +358,43 @@ volume_db = -5.0
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
 
+[node name="HUD" type="CanvasLayer" parent="."]
+scale = Vector2(3, 3)
+transform = Transform2D(3, 0, 0, 3, 0, 0)
+
+[node name="AmmoCount" type="Label" parent="HUD"]
+offset_left = 378.333
+offset_top = 24.6667
+offset_right = 418.333
+offset_bottom = 47.6667
+theme_override_fonts/font = ExtResource("8_t5ygq")
+theme_override_font_sizes/font_size = 16
+text = "6/12"
+metadata/_edit_group_ = true
+
+[node name="Health" type="AnimatedSprite2D" parent="HUD"]
+position = Vector2(411.333, 13.6667)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_mtjoi")
+animation = &"full"
+autoplay = "full"
+metadata/_edit_group_ = true
+
+[node name="Health2" type="AnimatedSprite2D" parent="HUD"]
+position = Vector2(381.333, 13.6667)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_mtjoi")
+animation = &"empty"
+autoplay = "full"
+metadata/_edit_group_ = true
+
+[node name="Health3" type="AnimatedSprite2D" parent="HUD"]
+position = Vector2(396.333, 13.6667)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_mtjoi")
+animation = &"empty"
+autoplay = "full"
+metadata/_edit_group_ = true
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="finished" from="Weapon/ReloadSound" to="." method="_on_reload_sound_finished"]
