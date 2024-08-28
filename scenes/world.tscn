@@ -149,10 +149,6 @@ stream = ExtResource("5_s1exr")
 position = Vector2(841, 312)
 scale = Vector2(0.11, 0.11)
 
-[node name="Enemy2" parent="." instance=ExtResource("6_hx2is")]
-position = Vector2(860, 332)
-scale = Vector2(0.11, 0.11)
-
 [node name="Enemy3" parent="." instance=ExtResource("6_hx2is")]
 position = Vector2(841, 390)
 scale = Vector2(0.11, 0.11)

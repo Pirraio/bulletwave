@@ -285,7 +285,7 @@ _data = {
 "red_lightsaber": SubResource("Animation_3mdk6")
 }
 
-[node name="PlayerBilly" type="CharacterBody2D"]
+[node name="PlayerBilly" type="CharacterBody2D" groups=["player"]]
 position = Vector2(522, 345)
 script = ExtResource("1_0s3vk")
 
@@ -307,7 +307,7 @@ shape = SubResource("RectangleShape2D_ivjeu")
 position = Vector2(0, -1.21593e-05)
 scale = Vector2(0.5, 0.5)
 
-[node name="Axis" type="Node2D" parent="Weapon"]
+[node name="Axis" type="Node2D" parent="Weapon" groups=["player"]]
 position = Vector2(0, 3.8147e-06)
 
 [node name="Sprite2D" type="Sprite2D" parent="Weapon/Axis"]
@@ -336,6 +336,7 @@ volume_db = -5.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
+limit_left = 565
 script = ExtResource("9_je5op")
 
 [node name="AmmoCount" type="Label" parent="."]

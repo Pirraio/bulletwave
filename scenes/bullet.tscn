@@ -5,17 +5,19 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qtoll"]
 radius = 10.0
-height = 30.0
+height = 40.0
 
 [node name="Bullet" type="Area2D"]
 scale = Vector2(0.2, 0.2)
 script = ExtResource("1_mcjak")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1.37)
+scale = Vector2(0.82, 0.82)
 shape = SubResource("CapsuleShape2D_qtoll")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(10, -1.00974e-28)
+position = Vector2(6.605, 0)
 rotation = 1.5708
 scale = Vector2(3, 3)
 texture = ExtResource("2_g8xt1")
@@ -24,8 +26,9 @@ vframes = 23
 frame = 884
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(1.25, -1.25)
-scale = Vector2(1.375, 1.625)
+position = Vector2(3.46, 0)
+scale = Vector2(1, 1.625)
+rect = Rect2(-13.25, -10.895, 20, 20)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
