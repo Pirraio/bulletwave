@@ -1,7 +1,7 @@
 extends Node
 
 
-var health = 3
+var health = 10
 var character = "billy" #default character
 var current_weapon = ""
 var total_ammo = 12

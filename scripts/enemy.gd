@@ -5,9 +5,13 @@ extends CharacterBody2D
 @onready var reloadTimer =  $RayCast2D/ReloadTimer
 @onready var sprite = $Sprite2D
 
+@onready var original_position = position #for shake
+
 @export var fire_rate = 1 #shoots per second
 @export var bullet_speed = 130
 @export var speed = 10
+
+
 
 var can_shoot = true
 var target = null
@@ -68,13 +72,27 @@ func _on_reload_timer_timeout() -> void:
 func hurt(damage):
 	health -= damage
 	if health > 0:
-		flash_white()
+		flash_white_and_shake()
 	if health <= 0:
 		queue_free()
 	
-func flash_white() -> void:
-	print("change color")
+func flash_white_and_shake() -> void:
 	sprite.modulate = Color(100, 100, 100)
+	await shake()
 	await get_tree().create_timer(0.05).timeout 
 	sprite.modulate = Color(1, 1, 1, 1)
-	
+
+
+func shake() -> void:
+	original_position = position
+	var shake_magnitude = .5
+	var shake_duration = 0.1
+	var elapsed_time = 0.0
+
+	while elapsed_time < shake_duration:
+		var random_offset = Vector2(randf_range(-shake_magnitude, shake_magnitude), randf_range(-shake_magnitude, shake_magnitude))
+		position = original_position + random_offset
+		await get_tree().process_frame
+		elapsed_time += get_process_delta_time()
+
+	position = original_position 

@@ -11,7 +11,7 @@ extends CharacterBody2D
 @onready var reload_sound = $Weapon/ReloadSound
 @onready var ammo_count = $AmmoCount
 
-
+@onready var original_position = position #for shake
 @onready var bullet_scene = preload("res://scenes/bullet.tscn")
 
 @export var speed = 100
@@ -137,8 +137,29 @@ func show_ammo(magazine, total_ammo):
 	ammo_count.text += str(ammo_left)
 
 func hurt(damage: int) -> void:
-	print("Player got hurt")
+	
 	Global.health -= damage
+	flash_white_and_shake()
 	if Global.health <= 0:
 		print("Player died")
-		
+	
+func flash_white_and_shake() -> void:
+	sprite.modulate = Color(100, 1, 1)
+	await shake()
+	await get_tree().create_timer(0.05).timeout 
+	sprite.modulate = Color(1, 1, 1, 1)
+
+
+func shake() -> void:
+	original_position = position
+	var shake_magnitude = .5
+	var shake_duration = 0.1
+	var elapsed_time = 0.0
+
+	while elapsed_time < shake_duration:
+		var random_offset = Vector2(randf_range(-shake_magnitude, shake_magnitude), randf_range(-shake_magnitude, shake_magnitude))
+		position = original_position + random_offset
+		await get_tree().process_frame
+		elapsed_time += get_process_delta_time()
+
+	position = original_position 
