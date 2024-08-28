@@ -8,6 +8,7 @@ extends Control
 
 
 var world = preload("res://scenes/world.tscn")
+var cutscene = preload("res://scenes/cutscene.tscn")
 
 func _ready():
 	billy_pixel_silhoutte.show()
@@ -38,9 +39,9 @@ func _on_caroline_button_mouse_exited():
 
 func _on_billy_button_pressed():
 	Global.character = "billy"
-	get_tree().change_scene_to_packed(world)
+	get_tree().change_scene_to_packed(cutscene)
 
 
 func _on_caroline_button_pressed():
 	Global.character = "caroline"
-	get_tree().change_scene_to_packed(world)
+	get_tree().change_scene_to_packed(cutscene)
