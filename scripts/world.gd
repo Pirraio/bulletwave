@@ -19,7 +19,7 @@ func _ready():
 
 
 func _process(delta):
-	if Global.enemyCount >= 3:
+	if Global.enemyCount >= 10:
 		Global.enemyCount = 0
 		get_tree().change_scene_to_file("res://scenes/win.tscn")
 
